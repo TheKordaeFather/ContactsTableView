@@ -29,7 +29,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Xys-1m-FV2"/>
+                    <navigationItem key="navigationItem" id="Xys-1m-FV2">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="aXF-EJ-yAc"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,11 +58,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Контакты" largeTitleDisplayMode="always" id="IX7-yp-GDO">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="qgz-rI-VRq"/>
+                        <barButtonItem key="backBarButtonItem" title="Отменить" id="qgz-rI-VRq"/>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="1IJ-om-DgX">
                             <connections>
                                 <action selector="addContact:" destination="3rT-s4-gqv" id="SBK-mF-MCs"/>
-                                <segue destination="82b-hr-bZu" kind="show" id="PGh-ro-OAt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -73,40 +74,60 @@
             <point key="canvasLocation" x="1913.0434782608697" y="83.705357142857139"/>
         </scene>
         <!--Контакт-->
-        <scene sceneID="Ng6-W4-UYE">
+        <scene sceneID="qes-Gx-cYv">
             <objects>
-                <viewController storyboardIdentifier="NewContactController" id="82b-hr-bZu" customClass="NewContactController" customModule="ContactsTableView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gwf-jD-gv5">
+                <viewController storyboardIdentifier="NewContactController" id="Vme-KP-ZFa" customClass="NewContactController" customModule="ContactsTableView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S31-C7-dfv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e18-yQ-R4L">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99999994039999995" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <navigationItem title="Контакт" id="mgq-te-NqH">
-                                        <barButtonItem key="rightBarButtonItem" title="Готово" id="sAi-ho-ybW"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Телефон" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-FJ-GB4">
+                                <rect key="frame" x="20" y="223" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FTu-2N-k8S">
+                                <rect key="frame" x="20" y="158" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwV-aF-LUB">
+                                <rect key="frame" x="279" y="54" width="115" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="fAv-aS-6et"/>
+                                    <constraint firstAttribute="width" constant="115" id="gwR-j0-AmW"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="saveContactButton:" destination="Vme-KP-ZFa" eventType="touchUpInside" id="S3L-F1-OFZ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="yqK-cN-Rvk"/>
+                        <viewLayoutGuide key="safeArea" id="mgh-YI-mZK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FTu-2N-k8S" firstAttribute="top" secondItem="EwV-aF-LUB" secondAttribute="bottom" constant="35" id="3zQ-ID-QrC"/>
+                            <constraint firstItem="mgh-YI-mZK" firstAttribute="trailing" secondItem="EwV-aF-LUB" secondAttribute="trailing" constant="20" id="D2x-0P-w9L"/>
+                            <constraint firstItem="EwV-aF-LUB" firstAttribute="top" secondItem="mgh-YI-mZK" secondAttribute="top" constant="10" id="JVZ-a1-Y53"/>
+                            <constraint firstItem="FTu-2N-k8S" firstAttribute="leading" secondItem="xyZ-FJ-GB4" secondAttribute="leading" id="M7O-z1-t7M"/>
+                            <constraint firstItem="FTu-2N-k8S" firstAttribute="leading" secondItem="S31-C7-dfv" secondAttribute="leadingMargin" id="POd-jz-Kl7"/>
+                            <constraint firstItem="FTu-2N-k8S" firstAttribute="trailing" secondItem="xyZ-FJ-GB4" secondAttribute="trailing" id="TVf-OK-XOg"/>
+                            <constraint firstItem="FTu-2N-k8S" firstAttribute="trailing" secondItem="EwV-aF-LUB" secondAttribute="trailing" id="Ujy-kX-MfF"/>
+                            <constraint firstItem="xyZ-FJ-GB4" firstAttribute="top" secondItem="FTu-2N-k8S" secondAttribute="bottom" constant="31" id="vej-tW-REN"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Контакт" id="Bve-bI-VY4">
-                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="ePF-Ip-TlT">
-                            <connections>
-                                <action selector="cancelButton:" destination="82b-hr-bZu" id="mIQ-R5-nSx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Контакт" id="BiY-fl-wpQ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contactNameField" destination="FTu-2N-k8S" id="u5m-2w-LI0"/>
+                        <outlet property="contactsPhoneField" destination="xyZ-FJ-GB4" id="2lG-yd-jfT"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V0E-A4-8zz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCI-xO-zeX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2803" y="84"/>
+            <point key="canvasLocation" x="2737.68115942029" y="83.705357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ISe-N8-WYJ">
@@ -118,6 +139,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EjT-hq-RM8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pZa-ht-cna"/>
                     </connections>

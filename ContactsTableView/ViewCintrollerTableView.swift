@@ -33,6 +33,7 @@ class ViewControllerTableView : UIViewController {
     ]
     
     @IBOutlet weak var contactTableView: UITableView!
+    let reuseIdentifireCell = "myCell"
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,10 @@ class ViewControllerTableView : UIViewController {
     
     
     @IBAction func addContact(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NewContactController") 
         
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
@@ -64,13 +68,14 @@ extension ViewControllerTableView:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") else {
             print("новая ячейка \(indexPath.row)")
-            let newCell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
+            let newCell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifireCell)
             return configuratedCell(cell: newCell, index: indexPath.row, contact: contacts[indexPath.row])
         }
         print("старая ячейка \(indexPath.row)")
         return configuratedCell(cell: cell, index: indexPath.row, contact: contacts[indexPath.row])
     }
+    
+    
 }
